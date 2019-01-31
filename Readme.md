@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Eugene Kuprikov](https://up.htmlacademy.ru/php/8/user/621103).
-* Наставник: [Максим Деев](https://up.htmlacademy.ru/php/8/user/685777).
+* Наставник: [Максим Деев](https://up.htmlacademy.ru/php/8/user/685777)
 
 ---
 
