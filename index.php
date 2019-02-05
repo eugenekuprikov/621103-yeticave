@@ -103,7 +103,7 @@ $announce_list = [
             <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html"><?=$categories[$index];?></a>
             </li>
-            <?php $index = $index + 1; ?>
+            <?php $index++; ?>
             <?php endwhile; ?>
         </ul>
     </section>
@@ -148,7 +148,7 @@ $announce_list = [
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?=$categories[$index];?></a>
             </li>
-            <?php $index = $index + 1; ?>
+            <?php $index++; ?>
             <?php endwhile; ?>
         </ul>
     </nav>
