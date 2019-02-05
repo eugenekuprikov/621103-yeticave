@@ -43,6 +43,17 @@ $announce_list = [
     'URL картинки' => 'img/lot-6.jpg'
   ]
 ];
+
+function sum_format($price) {
+  $price_int = ceil($price);
+  if ($price_int < 1000) {
+    $price_result = $price_int;
+  } else {
+    $price_result = number_format($price_int, 0, ' ', ' ');
+  }
+  $price_result = $price_result . ' ' . '<b class="rub">p</b>';
+  return $price_result;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
