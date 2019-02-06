@@ -43,6 +43,17 @@ $announce_list = [
     'URL картинки' => 'img/lot-6.jpg'
   ]
 ];
+
+function sum_format($price) {
+  $price_int = ceil($price);
+  if ($price_int < 1000) {
+    $price_result = $price_int;
+  } else {
+    $price_result = number_format($price_int, 0, ' ', ' ');
+  }
+  $price_result = $price_result . ' ' . '<b class="rub">p</b>';
+  return $price_result;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -103,7 +114,7 @@ $announce_list = [
             <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html"><?=$categories[$index];?></a>
             </li>
-            <?php $index = $index + 1; ?>
+            <?php $index++; ?>
             <?php endwhile; ?>
         </ul>
     </section>
@@ -123,7 +134,7 @@ $announce_list = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$item['Цена']; ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?php echo sum_format($item['Цена']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -148,7 +159,7 @@ $announce_list = [
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?=$categories[$index];?></a>
             </li>
-            <?php $index = $index + 1; ?>
+            <?php $index++; ?>
             <?php endwhile; ?>
         </ul>
     </nav>
