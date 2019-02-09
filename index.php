@@ -17,6 +17,17 @@ function sum_format($price) {
   return $price_result;
 }
 
+function time_left() {
+  date_default_timezone_set("Europe/Moscow");
+  $end_ts = strtotime("tomorrow midnight");
+  $ts = time();
+  $ts_diff = $end_ts - $ts;
+  $hours = floor($ts_diff / 3600);
+  $minutes = floor(($ts_diff % 3600) / 60);
+  $handm = $hours . ':' . $minutes;
+  return $handm;
+}
+
 $page_content = include_template('main.php', ['announce_list' => $announce_list]);
 $layout_content = include_template('layout.php', [
   'content' => $page_content,

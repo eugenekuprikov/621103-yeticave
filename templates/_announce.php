@@ -11,7 +11,7 @@
                 <span class="lot__cost"><?php echo sum_format($announce['Цена']); ?></span>
             </div>
             <div class="lot__timer timer">
-                12:23
+                <?php echo time_left(); ?>
             </div>
         </div>
     </div>
