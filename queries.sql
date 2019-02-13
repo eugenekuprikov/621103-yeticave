@@ -245,14 +245,14 @@ SELECT * FROM categories
 --
 -- Получаем открытые лоты
 --
-SELECT c.name, l.name, initial_price, picture_link FROM lots l 
+SELECT c.name, l.id, l.name, initial_price, picture_link FROM lots l 
 JOIN categories c ON l.category_id = c.id 
 WHERE completion_date BETWEEN '2019-02-12' AND '2019-03-01'
 
 --
 -- Показываем лот по его id с названием категории
 --
-SELECT c.name, date_creation, l.name, description, initial_price, completion_date, step_rate, picture_link FROM lots l 
+SELECT c.name, l.id, date_creation, l.name, description, initial_price, completion_date, step_rate, picture_link FROM lots l 
 JOIN categories c ON l.category_id = c.id 
 WHERE l.id = 2
 
@@ -265,6 +265,6 @@ WHERE id = 1
 --
 -- Получаем список самых свежих ставок для лота по его идентификатору
 --
-SELECT l.name, date_rate, summ_rate FROM rates r 
+SELECT l.name, r.id, date_rate, summ_rate FROM rates r 
 JOIN lots l ON r.lot_id = l.id 
 WHERE date_rate BETWEEN '2019-02-10 11-30' AND '2019-02-15 16-00' AND l.id = 3
