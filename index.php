@@ -1,16 +1,19 @@
 <?php
 require_once('functions.php');
 require_once('data.php');
-require_once 'init.php';
+require_once('init.php');
 
 if (!$link) {
-    $error = mysqli_connect_error();
-    $content = include_template('error.php', ['error' => $error]);
+  $error = mysqli_connect_error();
+  $content = include_template('error.php', ['error' => $error]);
 }
 else {
-    $sql = 'SELECT `id`, `name` FROM categories';
-    $result = mysqli_query($link, $sql);
+  $sql = 'SELECT `id`, `name` FROM categories';
+  $result = mysqli_query($link, $sql);
 
+  if ($result) {
+    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  }
 }
 
 $is_auth = rand(0, 1);
