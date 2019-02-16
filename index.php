@@ -7,6 +7,11 @@ if (!$link) {
     $error = mysqli_connect_error();
     $content = include_template('error.php', ['error' => $error]);
 }
+else {
+    $sql = 'SELECT `id`, `name` FROM categories';
+    $result = mysqli_query($link, $sql);
+
+}
 
 $is_auth = rand(0, 1);
 
