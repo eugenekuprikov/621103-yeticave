@@ -18,9 +18,5 @@
     <div class="lots__header">
         <h2>Открытые лоты</h2>
     </div>
-    <ul class="lots__list">
-        <?php foreach ($announce_list as $announce): ?>
-            <?=include_template('_announce.php', ['announce' => $announce]); ?>
-        <?php endforeach; ?>
-    </ul>
+        <?=include_template('_grid.php', ['announce_list' => $announce_list]); ?>
 </section>
