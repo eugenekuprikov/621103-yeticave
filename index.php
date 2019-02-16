@@ -1,6 +1,12 @@
 <?php
 require_once('functions.php');
 require_once('data.php');
+require_once 'init.php';
+
+if (!$link) {
+    $error = mysqli_connect_error();
+    $content = include_template('error.php', ['error' => $error]);
+}
 
 $is_auth = rand(0, 1);
 
