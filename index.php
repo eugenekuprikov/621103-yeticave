@@ -14,6 +14,10 @@ else {
   if ($result) {
     $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
   }
+  else {
+    $error = mysqli_error($link);
+    $content = include_template('error.php', ['error' => $error]);
+  }
 }
 
 $is_auth = rand(0, 1);
