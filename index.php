@@ -25,6 +25,11 @@ $sql = 'SELECT `categories.name`, `lots.id`, `lots.name`, `initial_price`, `pict
   . 'WHERE completion_date BETWEEN "2019-02-12" AND "2019-03-01"'
   . 'ORDER BY date_creation DESC LIMIT 6';
 
+  if ($res = mysqli_query($link, $sql)) {
+      $announce_list = mysqli_fetch_all($res, MYSQLI_ASSOC);
+      $content = include_template('main.php', ['announce_list' => $announce_list]);
+  }
+
 $is_auth = rand(0, 1);
 
 $user_name = 'Eugene';
