@@ -20,10 +20,10 @@ else {
   }
 }
 
-$sql = 'SELECT `categories.name`, `lots.id`, `lots.name`, `initial_price`, `picture_link` FROM lots'
-  . 'JOIN categories ON lots.category_id = category_id'
-  . 'WHERE completion_date BETWEEN "2019-02-12" AND "2019-03-01"'
-  . 'ORDER BY date_creation DESC LIMIT 6';
+$sql = 'SELECT `categories`.`name`, `lots`.`id`, `lots`.`name`, `initial_price`, `picture_link` FROM lots'
+  . ' JOIN categories ON lots.category_id = categories.id'
+  . ' WHERE completion_date BETWEEN "2019-02-12" AND "2019-03-01"'
+  . ' ORDER BY date_creation DESC LIMIT 6';
 
   if ($res = mysqli_query($link, $sql)) {
       $announce_list = mysqli_fetch_all($res, MYSQLI_ASSOC);
