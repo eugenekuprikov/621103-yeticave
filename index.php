@@ -59,7 +59,10 @@ function time_left() {
   return $handm;
 }
 
-$page_content = include_template('main.php', ['announce_list' => $announce_list]);
+$page_content = include_template('main.php', [
+  'announce_list' => $announce_list,
+  'categories' => $categories
+]);
 $layout_content = include_template('layout.php', [
   'content' => $page_content,
   'categories' => $categories,
