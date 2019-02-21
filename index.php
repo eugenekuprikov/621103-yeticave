@@ -1,6 +1,40 @@
 <?php
 require_once('functions.php');
 require_once('data.php');
+require_once('init.php');
+
+if (!$link) {
+  $error = mysqli_connect_error();
+  $content = include_template('error.php', ['error' => $error]);
+}
+else {
+  $sql = 'SELECT `id`, `name` FROM categories';
+  $result = mysqli_query($link, $sql);
+
+  if ($result) {
+    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  }
+  else {
+    $error = mysqli_error($link);
+    $content = include_template('error.php', ['error' => $error]);
+  }
+}
+
+$sql = 'SELECT `categories`.`name`, `lots`.`id`, `lots`.`name`, `initial_price`, `picture_link` FROM lots'
+  . ' JOIN categories ON lots.category_id = categories.id'
+  . ' WHERE completion_date BETWEEN "2019-02-12" AND "2019-03-01"'
+  . ' ORDER BY date_creation DESC LIMIT 6';
+
+  if ($res = mysqli_query($link, $sql)) {
+      $announce_list = mysqli_fetch_all($res, MYSQLI_ASSOC);
+      $content = include_template('main.php', [
+        'announce_list' => $announce_list, 
+        'categories' => $categories
+      ]);
+  }
+  else {
+    $content = include_template('error.php', ['error' => mysqli_error($link)]);
+  }
 
 $is_auth = rand(0, 1);
 
@@ -28,9 +62,8 @@ function time_left() {
   return $handm;
 }
 
-$page_content = include_template('main.php', ['announce_list' => $announce_list]);
 $layout_content = include_template('layout.php', [
-  'content' => $page_content,
+  'content' => $content,
   'categories' => $categories,
   'title' => 'Главная'
 ]);
