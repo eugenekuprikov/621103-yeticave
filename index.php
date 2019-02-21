@@ -5,7 +5,7 @@ require_once('init.php');
 
 if (!$link) {
   $error = mysqli_connect_error();
-  $content = include_template('error.php', ['error' => $error]);
+  $page_content = include_template('error.php', ['error' => $error]);
 }
 else {
   $sql = 'SELECT `id`, `name` FROM categories';
@@ -16,7 +16,7 @@ else {
   }
   else {
     $error = mysqli_error($link);
-    $content = include_template('error.php', ['error' => $error]);
+    $page_content = include_template('error.php', ['error' => $error]);
   }
 }
 
@@ -27,13 +27,13 @@ $sql = 'SELECT `categories`.`name`, `lots`.`id`, `lots`.`name`, `initial_price`,
 
   if ($res = mysqli_query($link, $sql)) {
       $announce_list = mysqli_fetch_all($res, MYSQLI_ASSOC);
-      $content = include_template('main.php', [
+      $page_content = include_template('main.php', [
         'announce_list' => $announce_list, 
         'categories' => $categories
       ]);
   }
   else {
-    $content = include_template('error.php', ['error' => mysqli_error($link)]);
+    $page_content = include_template('error.php', ['error' => mysqli_error($link)]);
   }
 
 $is_auth = rand(0, 1);
@@ -63,7 +63,7 @@ function time_left() {
 }
 
 $layout_content = include_template('layout.php', [
-  'content' => $content,
+  'content' => $page_content,
   'categories' => $categories,
   'title' => 'Главная'
 ]);
