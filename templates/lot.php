@@ -14,7 +14,7 @@
           <div class="lot-item__image">
             <img src="<?=$announce['picture_link']; ?>" width="730" height="548" alt="">
           </div>
-          <p class="lot-item__category">Категория: <span><?=$announce['category_id'];?></span></p>
+          <p class="lot-item__category">Категория: <span><?=$cat['name'];?></span></p>
           <p class="lot-item__description"><?=$announce['description'];?></p>
         </div>
         <div class="lot-item__right">
