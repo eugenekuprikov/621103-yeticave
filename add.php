@@ -50,4 +50,11 @@ else {
             $errors['file'] = 'Вы не загрузили файл';
         }
 
+        if (count($errors)) {
+            $page_content = include_template('add.php', ['announce' => $announce, 'errors' => $errors, 'dict' => $dict]);
+        }
+        else {
+            $page_content = include_template('lot.php', ['announce' => $announce]);
+        }
+
 ?>
