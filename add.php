@@ -67,5 +67,8 @@ else {
             $announce_id = mysqli_insert_id($link);
             header("Location: lot.php?id=" . $announce_id);
         }
+        else {
+            $page_content = include_template('error.php', ['error' => mysqli_error($link)]);
+        }
 
 ?>
