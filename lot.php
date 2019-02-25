@@ -18,7 +18,7 @@ else {
     }
 
     $id = mysqli_real_escape_string($link, $_GET['announce_id']);
-    $sql = "SELECT `lots`.`id`, `category_id`, `lots`.`name`, `description`, `initial_price`, `step_rate`, `picture_link` FROM lots" 
+    $sql = "SELECT `lots`.`id`, `category_id`, `lots`.`name`, `description`, `categories`.`name` AS category, `initial_price`, `step_rate`, `picture_link` FROM lots" 
         . " JOIN categories ON lots.category_id = categories.id" 
         . " WHERE lots.id = '%s'";
 
