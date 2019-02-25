@@ -26,5 +26,10 @@ else {
         $required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];
         $dict = ['lot-name' => 'Наименование лота', 'category' => 'Категория', 'message' => 'Описание', 'lot-rate' => 'Начальная цена', 'lot-step' => 'Шаг ставки', 'lot-date' => 'Дата завершения лота'];
         $errors = [];
+        foreach ($required as $key) {
+            if (empty($_POST[$key])) {
+                $errors[$key] = 'Это поле надо заполнить';
+            }
+        }
 
 ?>
