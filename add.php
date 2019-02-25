@@ -63,4 +63,9 @@ else {
         
         $res = mysqli_stmt_execute($stmt);
 
+        if ($res) {
+            $announce_id = mysqli_insert_id($link);
+            header("Location: lot.php?id=" . $announce_id);
+        }
+
 ?>
