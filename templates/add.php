@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="form__input-file">
-      <input class="visually-hidden" type="file" id="photo2" value="">
+      <input class="visually-hidden" type="file" name="announce_img" id="photo2" value="">
       <label for="photo2">
         <span>+ Добавить</span>
       </label>
