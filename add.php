@@ -70,5 +70,10 @@ else {
         else {
             $page_content = include_template('error.php', ['error' => mysqli_error($link)]);
         }
+    }
+    else {
+        $page_content = include_template('add.php', []);
+}
+}
 
 ?>
