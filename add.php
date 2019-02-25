@@ -32,4 +32,22 @@ else {
             }
         }
 
+        if (isset($_FILES['announce_img']['name'])) {
+            $tmp_name = $_FILES['announce_img']['tmp_name'];
+            $picture_link = $_FILES['announce_img']['name'];
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $file_type = finfo_file($finfo, $tmp_name);
+            if ($file_type !== "image/jpg") {
+                $errors['file'] = 'Загрузите картинку в формате JPG';
+            }
+            else {
+                $filename = uniqid() . '.jpg';
+                $announce['picture_link'] = $filename;
+                move_uploaded_file($tmp_name, 'img/' . $filename);
+            }
+        }
+        else {
+            $errors['file'] = 'Вы не загрузили файл';
+        }
+
 ?>
