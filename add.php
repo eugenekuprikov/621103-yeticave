@@ -18,8 +18,6 @@ else {
         show_error($page_content, $error);
     }
 
-    $page_content = include_template('add.php', ['categories' => $categories]);
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $announce = $_POST['announce'];
 
@@ -72,7 +70,7 @@ else {
         }
     }
     else {
-        $page_content = include_template('add.php', []);
+        $page_content = include_template('add.php', ['categories' => $categories]);
 }
 }
 
