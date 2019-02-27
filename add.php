@@ -30,6 +30,18 @@ else {
             }
         }
 
+        if (!preg_match('/^\d+$/', $_POST['lot-rate'])) {
+            $errors['lot-rate'] = 'Поле должно содержать только цифры';
+        }
+
+        if (!preg_match('/^\d+$/', $_POST['lot-step'])) {
+            $errors['lot-step'] = 'Поле должно содержать только цифры';
+        }
+
+        if (!check_date_format($_POST['lot-date'])) {
+            $errors['lot-date'] = 'Введите правильно дату';
+        }
+
         if (isset($_FILES['announce_img']['name'])) {
             $tmp_name = $_FILES['announce_img']['tmp_name'];
             $picture_link = $_FILES['announce_img']['name'];
