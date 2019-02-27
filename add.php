@@ -47,8 +47,8 @@ else {
             $picture_link = $_FILES['announce_img']['name'];
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $file_type = finfo_file($finfo, $tmp_name);
-            if ($file_type !== "image/jpg") {
-                $errors['file'] = 'Загрузите картинку в формате JPG';
+            if ($file_type !== "image/jpg" || $file_type !== "image/jpeg") {
+                $errors['file'] = 'Загрузите картинку в формате JPG или JPEG';
             }
             else {
                 $filename = uniqid() . '.jpg';
