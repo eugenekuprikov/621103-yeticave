@@ -64,14 +64,11 @@ else {
             $page_content = include_template('add.php', ['announce' => $announce, 'errors' => $errors, 'dict' => $dict]);
         }
         else {
-            $page_content = include_template('lot.php', ['announce' => $announce]);
-        }
+            $sql = 'INSERT INTO lots (category_id, author_id, date_creation, name, description, initial_price, completion_date, step_rate, picture_link) VALUES (?, 1, NOW(), ?, ?, ?, ?, ?, ?)';
 
-        $sql = 'INSERT INTO lots (category_id, author_id, date_creation, name, description, initial_price, completion_date, step_rate, picture_link) VALUES (?, 1, NOW(), ?, ?, ?, ?, ?, ?)';
-
-        $stmt = db_get_prepare_stmt($link, $sql, [$announce['category'], $announce['lot_name'], $announce['message'], $announce['lot_rate'], $announce['lot_date'], $announce['lot_step'], $announce['announce_img']]);
+            $stmt = db_get_prepare_stmt($link, $sql, [$announce['category'], $announce['lot_name'], $announce['message'], $announce['lot_rate'], $announce['lot_date'], $announce['lot_step'], $announce['announce_img']]);
         
-        $res = mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_execute($stmt);
 
         if ($res) {
             $announce_id = mysqli_insert_id($link);
@@ -79,6 +76,7 @@ else {
         }
         else {
             $page_content = include_template('error.php', ['error' => mysqli_error($link)]);
+        }
         }
     }
     else {
