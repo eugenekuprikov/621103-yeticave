@@ -47,7 +47,7 @@ else {
             $picture_link = $_FILES['announce_img']['name'];
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $file_type = finfo_file($finfo, $tmp_name);
-            if ($file_type !== "image/jpg" || $file_type !== "image/jpeg") {
+            if ($file_type !== "image/jpg" && $file_type !== "image/jpeg") {
                 $errors['file'] = 'Загрузите картинку в формате JPG или JPEG';
             }
             else {
@@ -61,7 +61,7 @@ else {
         }
 
         if (count($errors)) {
-            $page_content = include_template('add.php', ['announce' => $announce, 'errors' => $errors, 'dict' => $dict]);
+            $page_content = include_template('add.php', ['announce' => $announce, 'categories' => $categories, 'errors' => $errors, 'dict' => $dict]);
         }
         else {
             $sql = 'INSERT INTO lots (category_id, author_id, date_creation, name, description, initial_price, completion_date, step_rate, picture_link) VALUES (?, 1, NOW(), ?, ?, ?, ?, ?, ?)';
