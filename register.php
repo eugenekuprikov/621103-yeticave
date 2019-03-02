@@ -48,4 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else {
             $password = password_hash($form['password'], PASSWORD_DEFAULT);
+
+            if (isset($_FILES['avatar_img']['name'])) {
+                $tmp_name = $_FILES['avatar_img']['tmp_name'];
+                $avatar = $_FILES['avatar_img']['name'];
+                $file_type = mime_content_type($tmp_name);
+                if ($file_type !== "image/jpg" && $file_type !== "image/jpeg") {
+                    $errors['file'] = 'Загрузите картинку в формате JPG или JPEG';
+                }
+                else {
+                    $filename = uniqid() . '.jpg';
+                    $user['avatar'] = $filename;
+                    move_uploaded_file($tmp_name, 'img/' . $filename);
+                }
+            }
+            else {
+                $errors['file'] = 'Вы не загрузили файл';
+            }
 ?>
