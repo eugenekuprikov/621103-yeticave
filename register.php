@@ -75,4 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: /enter.php");
             exit();
         }
+    }
+    $tpl_data['errors'] = $errors;
+    $tpl_data['values'] = $form;
+}
 ?>
