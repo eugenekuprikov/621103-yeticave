@@ -79,4 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tpl_data['errors'] = $errors;
     $tpl_data['values'] = $form;
 }
+
+$page_content = include_template('reg.php', ['categories' => $categories], $tpl_data);
+
+$layout_content = include_template('layout.php', [
+    'content'    => $page_content,
+    'categories' => $categories,
+    'title'      => 'Регистрация'
+]);
+
+print($layout_content);
 ?>
