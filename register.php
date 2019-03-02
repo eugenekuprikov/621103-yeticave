@@ -42,4 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $sql = "SELECT id FROM users WHERE email = '$email'";
         $res = mysqli_query($link, $sql);
+
+        if (mysqli_num_rows($res) > 0) {
+            $errors[] = 'Пользователь с этим email уже зарегистрирован';
+        }
 ?>
