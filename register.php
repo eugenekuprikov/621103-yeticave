@@ -19,4 +19,17 @@ else {
     }
 }
 
+$tpl_data = [];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $form = $_POST;
+    $errors = [];
+
+    $req_fields = ['email', 'password', 'name', 'message'];
+
+    foreach ($req_fields as $field) {
+        if (empty($form[$field])) {
+            $errors[] = "Не заполнено поле " . $field;
+        }
+    }
 ?>
