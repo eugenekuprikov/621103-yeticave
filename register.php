@@ -39,4 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Введите email в правильном формате';
         }
+
+        $sql = "SELECT id FROM users WHERE email = '$email'";
+        $res = mysqli_query($link, $sql);
 ?>
