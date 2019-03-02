@@ -70,4 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = db_get_prepare_stmt($link, $sql, [$form['email'], $form['name'], $password, $form['avatar'], $form['message']]);
             $res = mysqli_stmt_execute($stmt);
         }
+
+        if ($res && empty($errors)) {
+            header("Location: /enter.php");
+            exit();
+        }
 ?>
