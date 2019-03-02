@@ -46,4 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($res) > 0) {
             $errors[] = 'Пользователь с этим email уже зарегистрирован';
         }
+        else {
+            $password = password_hash($form['password'], PASSWORD_DEFAULT);
 ?>
