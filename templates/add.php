@@ -1,16 +1,16 @@
 <nav class="nav">
-  <ul class="nav__list container">
-    <?php foreach ($categories as $cat): ?>
-    <li class="nav__item">
-      <a href="add.php?cat_id=<?= $cat['id']; ?>"><?=$cat['name'];?></a>
-    </li>
-    <?php endforeach; ?>
-  </ul>
+	<ul class="nav__list container">
+		<?php foreach ($categories as $cat): ?> 
+		<li class="nav__item">
+			<a href="add.php?cat_id=<?= $cat['id']; ?>"><?=$cat['name'];?></a>
+		</li>
+		<?php endforeach; ?>
+	</ul>
 </nav>
 <form class="form form--add-lot container form--invalid" action="add.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
   <h2>Добавление лота</h2>
   <div class="form__container-two">
-    <div class="form__item form__item--invalid">
+    <div class="form__item form__item--invalid"> 
       <?php $classname = isset($errors['lot-name']) ? "form__item--invalid" : "";
       $value = isset($announce['lot-name']) ? $announce['lot-name'] : ""; ?>
       <label for="lot-name">Наименование</label>
