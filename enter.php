@@ -34,3 +34,8 @@ else {
         $res = mysqli_query($link, $sql);
 
         $user = $res ? mysqli_fetch_array($res, MYSQLI_ASSOC) : null;
+
+        if (!count($errors) and $user) {
+            if (password_verify($form['password'], $user['password'])) {
+                $_SESSION['user'] = $user;
+            }
