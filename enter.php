@@ -46,3 +46,7 @@ else {
         else {
             $errors['email'] = 'Такой пользователь не найден';
         }
+
+        if (count($errors)) {
+            $page_content = include_template('enter.php', ['form' => $form, 'categories' => $categories, 'errors' => $errors]);
+        }
