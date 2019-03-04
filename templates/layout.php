@@ -28,6 +28,9 @@
           <p>
             <?php echo $user_name ?>
           </p>
+          <p class="user-menu__item">
+            <a href="logout.php">Выход</a>
+          </p>
         </div>
         <?php else: ?>
         <ul class="user-menu__list">
