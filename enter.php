@@ -17,3 +17,9 @@ else {
         $error = mysqli_error($link);
         show_error($page_content, $error);
     }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $form = $_POST;
+
+        $required = ['email', 'password'];
+        $errors = [];
