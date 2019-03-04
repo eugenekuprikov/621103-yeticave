@@ -23,3 +23,8 @@ else {
 
         $required = ['email', 'password'];
         $errors = [];
+        foreach ($required as $field) {
+            if (empty($form[$field])) {
+                $errors[$field] = 'Это поле надо заполнить';
+            }
+        }
