@@ -55,3 +55,12 @@ else {
             exit();
         }
     }
+    else {
+        if (isset($_SESSION['user'])) {
+            $page_content = include_template('index.php', ['announce_list' => $announce_list, 'categories' => $categories]);
+        }
+        else {
+            $page_content = include_template('enter.php', ['categories' => $categories]);
+        }
+    }
+}
