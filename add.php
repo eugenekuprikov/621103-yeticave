@@ -2,6 +2,11 @@
 require_once('init.php');
 require_once('functions.php');
 
+if (!isset($_SESSION['user'])) {
+    header("HTTP/1.0 403 Forbidden");
+    exit();
+}
+
 if (!$link) {
     $error = mysqli_connect_error();
     show_error($page_content, $error);
