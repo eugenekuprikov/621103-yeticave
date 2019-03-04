@@ -39,3 +39,7 @@ else {
             if (password_verify($form['password'], $user['password'])) {
                 $_SESSION['user'] = $user;
             }
+            else {
+                $errors['password'] = 'Неверный пароль';
+            }
+        }
