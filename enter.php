@@ -51,7 +51,7 @@ else {
             $page_content = include_template('enter.php', ['form' => $form, 'categories' => $categories, 'errors' => $errors]);
         }
         else {
-            header("Location: /enter.php");
+            header("Location: /");
             exit();
         }
     }
