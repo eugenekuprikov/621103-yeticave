@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             $sql = 'INSERT INTO users (reg_date, email, name, password, avatar, contacts) VALUES (NOW(), ?, ?, ?, ?, ?)';
-            $stmt = db_get_prepare_stmt($link, $sql, [$form['email'], $form['name'], $password, $form['avatar'], $form['message']]);
+            $stmt = db_get_prepare_stmt($link, $sql, [$form['email'], $form['name'], $password, $user['avatar'], $form['message']]);
             $res = mysqli_stmt_execute($stmt);
         }
 

@@ -23,10 +23,13 @@
 
         <nav class="user-menu">
 
-        <?php if ($is_auth == 1): ?>
+        <?php if (isset($_SESSION['user'])): ?>
         <div class="user-menu__logged">
           <p>
-            <?php echo $user_name ?>
+            <?php $_SESSION['user']['name']; ?>
+          </p>
+          <p class="user-menu__item">
+            <a href="logout.php">Выход</a>
           </p>
         </div>
         <?php else: ?>
@@ -35,7 +38,7 @@
             <a href="register.php">Регистрация</a>
           </li>
           <li class="user-menu__item">
-            <a href="#">Вход</a>
+            <a href="enter.php">Вход</a>
           </li>
         </ul>
         <?php endif; ?>
