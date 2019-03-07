@@ -17,6 +17,15 @@ else {
         $page_content = include_template('error.php', ['error' => $error]);
     }
 
+    $sql = "SELECT `rates`.`id`, `user_id`, `users`.`name` AS user, `date_rate`, `summ_rate` FROM rates"
+        . " JOIN users ON rates.user_id = users.id"
+        . " ORDER BY date_rate DESC";
+    $result = mysqli_query($link, $sql);
+
+    if ($result) {
+        $rates = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
     $id = mysqli_real_escape_string($link, $_GET['announce_id']);
     $sql = "SELECT `lots`.`id`, `category_id`, `lots`.`name`, `description`, `categories`.`name` AS category, `initial_price`, `step_rate`, `picture_link` FROM lots" 
         . " JOIN categories ON lots.category_id = categories.id" 
