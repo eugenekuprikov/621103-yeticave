@@ -86,8 +86,6 @@ CREATE TABLE `rates` (
 
 CREATE TABLE `users` (
   `id` int(7) UNSIGNED NOT NULL,
-  `lot_id` int(7) UNSIGNED NOT NULL,
-  `rate_id` int(7) UNSIGNED NOT NULL,
   `reg_date` timestamp NOT NULL,
   `email` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,

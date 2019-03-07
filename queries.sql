@@ -120,8 +120,6 @@ INSERT INTO `rates` (`id`, `lot_id`, `user_id`, `date_rate`, `summ_rate`) VALUES
 
 CREATE TABLE `users` (
   `id` int(7) UNSIGNED NOT NULL,
-  `lot_id` int(7) UNSIGNED NOT NULL,
-  `rate_id` int(7) UNSIGNED NOT NULL,
   `reg_date` timestamp NOT NULL,
   `email` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -134,10 +132,10 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `lot_id`, `rate_id`, `reg_date`, `email`, `name`, `password`, `avatar`, `contacts`) VALUES
-(1, 1, 1, '2019-01-31 20:00:00', 'abc@gmail.com', 'Даниил', '123', 'daniil_001.com', 'Москва'),
-(2, 3, 2, '2019-02-02 08:00:00', 'ddfe@gmail.com', 'Денис', '456', 'den_01', 'Тула'),
-(3, 2, 3, '2019-02-03 02:50:00', 'adfc@gmail.com', 'Ян', '789', 'yanyan', 'Владивосток');
+INSERT INTO `users` (`id`, `reg_date`, `email`, `name`, `password`, `avatar`, `contacts`) VALUES
+(1, '2019-01-31 20:00:00', 'abc@gmail.com', 'Даниил', '123456789', 'daniil_001.com', 'Москва'),
+(2, '2019-02-02 08:00:00', 'ddfe@gmail.com', 'Денис', '456456456', 'den_01', 'Тула'),
+(3, '2019-02-03 02:50:00', 'adfc@gmail.com', 'Ян', '789789789', 'yanyan', 'Владивосток');
 
 -- --------------------------------------------------------
 
