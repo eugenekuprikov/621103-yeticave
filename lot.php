@@ -40,7 +40,7 @@ else {
         }
         else {
             $announce = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $page_content = include_template('lot.php', ['announce' => $announce, 'categories' => $categories]);   
+            $page_content = include_template('lot.php', ['announce' => $announce, 'categories' => $categories, 'rates' => $rates]);   
         }
     }
     else {
