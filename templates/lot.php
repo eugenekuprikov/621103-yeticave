@@ -45,6 +45,13 @@
       <div class="history">
         <h3>История ставок (<span>10</span>)</h3>
         <table class="history__list">
+          <?php foreach ($rates as $rate): ?>
+          <tr class="history__item">
+            <td class="history__name"><?=$rate['user'];?></td>
+            <td class="history__price"><?=$rate['summ_rate'];?></td>
+            <td class="history__time"><?=$rate['date_rate'];?></td>
+          </tr>
+          <?php endforeach; ?>
           <tr class="history__item">
             <td class="history__name">Иван</td>
             <td class="history__price">10 999 р</td>
