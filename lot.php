@@ -38,6 +38,27 @@ else {
         $error = mysqli_error($link);
         $page_content = include_template('error.php', ['error' => $error]);
     }
+
+    if (isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $form = $_POST;
+        $errors = [];
+
+        if (empty($form['cost'])) {
+            $errors[] = 'Это поле надо заполнить';
+        }
+
+        if (!filter_var($form['cost'], FILTER_VALIDATE_INT) && $form['cost'] < 0) {
+            $errors[] = 'Поле должно содержать целое положительное число';
+        }
+
+        if ($form['cost'] > $announce['initial_price'] + $announce['step_rate']) {
+            $sql = 'INSERT INTO rates (lot_id, user_id, date_rate, summ_rate) VALUES (1, 1, NOW(), ?)';
+
+            $stmt = db_get_prepare_stmt($link, $sql, [$rate['cost']]);
+
+            $res = mysqli_stmt_execute($stmt);
+        }
+    }
 }
 
 $layout_content = include_template('layout.php', [
