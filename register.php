@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $req_fields = ['email', 'password', 'name', 'message'];
 
     foreach ($req_fields as $field) {
-        if (empty($form[$field])) {
+        if (empty($form[$field]) || trim($form[$field]) == '') {
             $errors[] = "Не заполнено поле " . $field;
         }
     }
@@ -66,14 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errors['file'] = 'Вы не загрузили файл';
             }
 
-            $sql = 'INSERT INTO users (reg_date, email, name, password, avatar, contacts) VALUES (NOW(), ?, ?, ?, ?, ?)';
-            $stmt = db_get_prepare_stmt($link, $sql, [$form['email'], $form['name'], $password, $user['avatar'], $form['message']]);
-            $res = mysqli_stmt_execute($stmt);
-        }
-
-        if ($res && empty($errors)) {
-            header("Location: /enter.php");
-            exit();
+            if ($res && empty($errors)) {
+                $sql = 'INSERT INTO users (reg_date, email, name, password, avatar, contacts) VALUES (NOW(), ?, ?, ?, ?, ?)';
+                $stmt = db_get_prepare_stmt($link, $sql, [$form['email'], $form['name'], $password, $user['avatar'], $form['message']]);
+                $res = mysqli_stmt_execute($stmt);
+        
+                header("Location: /enter.php");
+                exit(); 
+            }
         }
     }
     $tpl_data['errors'] = $errors;
